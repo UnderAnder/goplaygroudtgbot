@@ -11,7 +11,7 @@ type Message struct {
 }
 
 type Chat struct {
-	ChatID int `json:"id"`
+	ChatId int `json:"id"`
 }
 
 type RestResponse struct {
@@ -19,7 +19,11 @@ type RestResponse struct {
 }
 
 type BotMessage struct {
-	ChatID int    `json:"chat_id"`
+	ChatId int    `json:"chat_id"`
 	Text   string `json:"text"`
 	Date   int64  `json:"date"`
+}
+
+func (m *Message) HasPrefix(s, prefix string) bool {
+	return len(s) >= len(prefix) && s[0:len(prefix)] == prefix
 }
